@@ -1,0 +1,154 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem 5vw;
+    
+    z-index: 100;
+    isolation: isolate;
+
+    .navLinks {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .logo h2 {
+            font-size: 3rem;
+        }
+    }
+
+    .socialLinks {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        a {
+            img {
+                height: 1.15rem;
+            }
+
+            &:nth-child(3) img {
+                height: 1.25rem;
+            }
+
+            &:nth-child(4) img {
+                height: 1.5rem;
+            }
+        }
+
+    }
+
+    .menuBtn {
+        display: none;
+        $height: 1rem;
+        $width: 1.75rem;
+
+        height: $height;
+        width: $width;
+
+        cursor: pointer;
+
+        .icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            &::after, &::before {
+                content: '';
+                position: absolute;
+                inset: 0 0;
+
+                width: 100%;
+                height: 0.25rem;
+
+                background: #000;
+                border-radius: 0.5rem;
+
+                transition: all 0.3s ease-in-out;
+                transform-origin: center;
+            }
+            
+            &::before {
+                inset: auto 0rem 0rem;
+            }
+        }
+    }
+
+    .menuBtn#open {
+        .icon {
+            &::after {
+                transform: rotate(45deg) translate(0.25rem, 0.25rem);
+            }
+            
+            &::before {
+                transform: rotate(-45deg) translate(0.25rem, -0.25rem);
+            }
+        }
+    }
+
+    .navMenu {
+        display: none;
+
+        position: fixed;
+        inset: 0rem 0rem;
+
+        width: 100%;
+        height: calc(100vh);
+
+        flex-direction: column;
+        justify-content: space-between;
+
+        padding: 6rem 5vw 1.5rem;
+
+        background: hsla(0, 0%, 0%, 0);
+        backdrop-filter: blur(20px) saturate(1.1);
+
+        transition: all 0.5s ease-in-out;
+        clip-path: inset(0% 0% 100% 0%);
+
+        z-index: -1;
+
+        .navLinks {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .socialLinks {
+            justify-content: center;
+        }
+    }
+
+    .navMenu#open {
+        clip-path: inset(0% 0% 0% 0%);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        // justify-content: space-between;
+    }
+
+    .header > .navLinks a,
+    .header > .socialLinks {
+        display: none;
+    }
+
+    .logo {
+        display: block !important;
+    }
+
+    .menuBtn {
+        display: block !important;
+    }
+
+    .header .navMenu {
+        display: flex;
+    }
+}
