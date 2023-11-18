@@ -5,7 +5,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.home}>
         <h1>Americorp <span>TM</span></h1>
-        <img src="/images/logo.gif" alt="Americorp" />
+        <img src="/images/flag.gif" alt="Americorp" />
       </div>
     </main>
   )
